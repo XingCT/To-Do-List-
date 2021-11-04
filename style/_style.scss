@@ -1,0 +1,119 @@
+i {
+    pointer-events: none;
+}
+body { 
+    background: radial-gradient(
+        black 3px, 
+        transparent 5px, 
+        black 7px, 
+        transparent 9px, 
+        black 11px, 
+        transparent 13px, 
+        black 15px, 
+        transparent 17px, 
+        black 19px, 
+        transparent 21px, 
+        black 23px, 
+        transparent 25px, 
+        black 27px, 
+        transparent 29px, 
+        black 31px, 
+        transparent 33px);
+    background-color: yellowgreen;
+    background-size: 40px 40px;
+}
+
+header{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        color: #ffffff;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input, button {
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        margin: 0.5rem;
+    }
+    input[type='number']{
+        text-align: center;
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+    button {
+        cursor: pointer;
+        border: black solid 0.2rem;
+        border-radius: 20px;
+        background-color: rgb(207, 243, 3);
+    }
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.25rem 0rem;
+    li {
+        background-color: #fff;
+        margin: 0.5rem;
+        font-size: 1.75rem;
+        display: flex;
+        align-items: center;
+        transition: all 0.4s ease;
+        p {
+            font-size: 1.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+        button {
+            padding: 0.25rem 0.5rem;
+            font-size: 1.75rem;
+            border: none;
+            cursor: pointer;
+            color: black;
+        }
+        button.check{
+            background-color: rgb(207, 243, 3);
+        }
+        button.trash{
+            background-color: red;
+        }
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes scaleDown {
+    to {
+        transform: scale(0);
+    }
+}
+
+.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+    text-decoration-thickness: 0.2rem;
+}

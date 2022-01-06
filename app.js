@@ -13,12 +13,12 @@ add.addEventListener('click', e => {
 
     // 篩選變數
     if (todoText === '') {
-        alert('Please Enter some Text.');
+        alert('請輸入文字');
         return;
-    }else if ((todoMonth > 12) || (todoMonth <= 0) || (todoMonth === '')){
+    } else if ((todoMonth > 12) || (todoMonth <= 0) || (todoMonth === '')) {
         alert('輸入正確月份');
         return;
-    }else if ((todoDate > 31) || (todoDate <= 0) || (todoDate === '')) {
+    } else if ((todoDate > 31) || (todoDate <= 0) || (todoDate === '')) {
         alert('輸入正確日期');
         return;
     }
@@ -31,7 +31,7 @@ add.addEventListener('click', e => {
     let answer = document.createElement('p');
     answer.classList.add('answer');
     answer.innerText = todoText + ' ' + todoMonth + '/' + todoDate;
-    
+
     // 加入 ul > li > p
     ul.appendChild(list);
     list.appendChild(answer);
@@ -53,11 +53,11 @@ add.addEventListener('click', e => {
         let todoItem = e.target.parentElement;
         // 動畫結束時 remove
         todoItem.addEventListener('animationend', () => {
-            
+
             let text = todoItem.children[0].innerText;
             let myListArray = JSON.parse(localStorage.getItem('Data'));
             myListArray.forEach((item, index) => {
-                if ((item.todoText + ' ' + item.todoMonth + '/' + item.todoDate)  == text) {
+                if ((item.todoText + ' ' + item.todoMonth + '/' + item.todoDate) == text) {
                     myListArray.splice(index, 1);
                     localStorage.setItem('Data', JSON.stringify(myListArray));
                 }
@@ -118,54 +118,54 @@ if (myData !== null) {
     myDataArray.forEach(item => {
 
 
-    // 新增 li
-    let list = document.createElement('li');
-    list.classList.add('todo-answer');
+        // 新增 li
+        let list = document.createElement('li');
+        list.classList.add('todo-answer');
 
-    // 新增 p 段落
-    let answer = document.createElement('p');
-    answer.classList.add('answer');
-    answer.innerText = item.todoText + ' ' + item.todoMonth + '/' + item.todoDate;
-    
-    // 加入 ul > li > p
-    ul.appendChild(list);
-    list.appendChild(answer);
+        // 新增 p 段落
+        let answer = document.createElement('p');
+        answer.classList.add('answer');
+        answer.innerText = item.todoText + ' ' + item.todoMonth + '/' + item.todoDate;
 
-    //  新增 確認鍵
-    let check = document.createElement('button');
-    check.classList.add('check');
-    check.innerHTML = '<i class="fa-solid fa-check"></i>';
-    check.addEventListener('click', e => {
-        let todoItem = e.target.parentElement;
-        todoItem.classList.toggle('done');
-    })
+        // 加入 ul > li > p
+        ul.appendChild(list);
+        list.appendChild(answer);
 
-    // 新增 垃圾桶
-    let trash = document.createElement('button');
-    trash.classList.add('trash');
-    trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-    trash.addEventListener('click', e => {
-        let todoItem = e.target.parentElement;
-        // 動畫結束時 remove
-        todoItem.addEventListener('animationend', () => {
-
-            let text = todoItem.children[0].innerText;
-            let myListArray = JSON.parse(localStorage.getItem('Data'));
-            myListArray.forEach((item, index) => {
-                if ((item.todoText + ' ' + item.todoMonth + '/' + item.todoDate)  == text) {
-                    myListArray.splice(index, 1);
-                    localStorage.setItem('Data', JSON.stringify(myListArray));
-                }
-            })
-
-            todoItem.remove();
+        //  新增 確認鍵
+        let check = document.createElement('button');
+        check.classList.add('check');
+        check.innerHTML = '<i class="fa-solid fa-check"></i>';
+        check.addEventListener('click', e => {
+            let todoItem = e.target.parentElement;
+            todoItem.classList.toggle('done');
         })
-        // 垃圾桶動畫
-        todoItem.style.animation = 'scaleDown 0.3s forwards';
-    })
 
-    // 加入列表
-    list.appendChild(check);
-    list.appendChild(trash);
+        // 新增 垃圾桶
+        let trash = document.createElement('button');
+        trash.classList.add('trash');
+        trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        trash.addEventListener('click', e => {
+            let todoItem = e.target.parentElement;
+            // 動畫結束時 remove
+            todoItem.addEventListener('animationend', () => {
+
+                let text = todoItem.children[0].innerText;
+                let myListArray = JSON.parse(localStorage.getItem('Data'));
+                myListArray.forEach((item, index) => {
+                    if ((item.todoText + ' ' + item.todoMonth + '/' + item.todoDate) == text) {
+                        myListArray.splice(index, 1);
+                        localStorage.setItem('Data', JSON.stringify(myListArray));
+                    }
+                })
+
+                todoItem.remove();
+            })
+            // 垃圾桶動畫
+            todoItem.style.animation = 'scaleDown 0.3s forwards';
+        })
+
+        // 加入列表
+        list.appendChild(check);
+        list.appendChild(trash);
     })
 }
